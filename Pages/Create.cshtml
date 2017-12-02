@@ -1,0 +1,48 @@
+﻿@page
+@model CreateModel
+@{
+    ViewData["Title"] = "New Customer";
+}
+
+<h2>@ViewData["Title"]</h2>
+<p><a asp-page="Index">Back to Workorder list</a></p>
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="POST">
+            <h4>Create a new Workorder.</h4>
+            <hr />
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="WorkOrder.Name"></label>
+                <input asp-for="WorkOrder.Name" class="form-control" />
+                <span asp-validation-for="WorkOrder.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkOrder.Address"></label>
+                <input asp-for="WorkOrder.Address" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkOrder.Description"></label>
+                <input asp-for="WorkOrder.Description" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkOrder.Start"></label>
+                <input asp-for="WorkOrder.Start" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkOrder.Status"></label>
+                <input asp-for="WorkOrder.Status" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkOrder.SentInvoice"></label>
+                <input asp-for="WorkOrder.SentInvoice" class="form-control" />
+            </div>
+            <button type="submit" class"btn btn-default">Save</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}
