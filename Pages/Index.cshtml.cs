@@ -12,8 +12,9 @@ namespace BravisWorkplanner.Pages
 {
     public class IndexModel : PageModel
     {
+        // Creating a private field for the db context.
         private readonly BravisDbContext _db;
-
+        // Using DI to access the Db context.
         public IndexModel(BravisDbContext db)
         {
             _db = db;
@@ -37,7 +38,7 @@ namespace BravisWorkplanner.Pages
 
             WorkOrders = await workOrders.ToListAsync();
         }
-        
+
         public async Task<IActionResult> OnPostDeleteAsync(int id)
         {
             _db.WorkOrders.Attach(new WorkOrder { Id = id}).State = EntityState.Deleted;
@@ -45,6 +46,7 @@ namespace BravisWorkplanner.Pages
 
             Message = $"Workorder {id} was deleted successfully";
             return RedirectToPage();
-        }
+}
+    
     }
 }
